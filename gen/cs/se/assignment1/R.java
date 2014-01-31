@@ -24,13 +24,14 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080007;
+        public static final int action_settings=0x7f080008;
         public static final int add=0x7f080005;
         public static final int button_increment=0x7f080002;
         public static final int counterList=0x7f080003;
         public static final int editName=0x7f080004;
-        public static final int listview_stat=0x7f080006;
+        public static final int listview_stat=0x7f080007;
         public static final int name_counter=0x7f080000;
+        public static final int order=0x7f080006;
         public static final int text_counts=0x7f080001;
     }
     public static final class layout {
@@ -59,6 +60,7 @@ public final class R {
         public static final int cancel=0x7f05000b;
         public static final int hello_world=0x7f050004;
         public static final int ok=0x7f05000a;
+        public static final int order=0x7f050012;
         public static final int textview_stat=0x7f050011;
         public static final int title_activity_counter=0x7f050003;
         public static final int title_activity_stat=0x7f05000c;

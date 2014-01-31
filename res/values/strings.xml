@@ -19,5 +19,6 @@
     <string name="button_day">Day</string>
     <string name="button_month">Month</string>
     <string name="textview_stat">Aggregate total counts by:</string>
+    <string name="order">Sort</string>
 
 </resources>

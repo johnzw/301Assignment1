@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 import com.google.gson.Gson;
@@ -164,8 +166,21 @@ public class MainActivity extends Activity {
 		editText.setText("");
 		
 		this.createAnotherActivity(counter);
+	}
+	
+	public void sort(View view){
+		Collections.sort(counterList, new Comparator<Counter>(){
+			public int compare(Counter counter1, Counter counter2){
+				if(counter1.getTotalcounts() < counter2.getTempcounts()){
+					return 1;
+				}
+				else{
+					return -1;
+				}
+			}
+		});
 		
-		
+		adapter.notifyDataSetChanged();
 	}
 	
 	//send counter to another activity, and start that activity
