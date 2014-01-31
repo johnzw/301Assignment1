@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
 	private ListView listCounter;
 	private ArrayList<Counter> counterList = null;
 	private ArrayAdapter<Counter> adapter;
+	public final static String EXTRA_MESSAGE = "assignment1.MainActivity.MESSAGE";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +60,15 @@ public class MainActivity extends Activity {
 		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counterList);
 		listCounter.setAdapter(adapter);
 		
+		//Add Listener to listView, such that user can see more information about the counter when he click on it
 		listCounter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				// TODO Auto-generated method stub
-				
 				Counter counter = adapter.getItem(position);
-				editText.setText(counter.getName());
+				createAnotherActivity(counter);
 			}
 		});
 		
@@ -78,20 +79,27 @@ public class MainActivity extends Activity {
 	//create a new activity for counter
 	public void addCounter(View view){
 		
-		Intent intent = new Intent(this, CounterActivity.class);
-		//Get the name from EditText, without considering the blank one, without name checking 
 		
+		//Get the name from EditText, without considering the blank one, without name checking 
 		String name = editText.getText().toString();
 		
 		//use this name to create a counter
 		Counter counter = new Counter(name);
 		this.saveInFile(counter);
-		
 		//Add counter to exsiting counter list
 		counterList.add(counter);
 		adapter.notifyDataSetChanged();
 		editText.setText("");
 		
+		this.createAnotherActivity(counter);
+	}
+	
+	//send counter to another activity, and start that activity
+	private void createAnotherActivity(Counter counter){
+		Intent intent = new Intent(this, CounterActivity.class);
+		Gson gson = new Gson();
+		intent.putExtra(this.EXTRA_MESSAGE, gson.toJson(counter));
+		startActivity(intent); 
 	}
 	
 	//Load everything from counterlist file, and store it in memory, and make it ready to present to screen
