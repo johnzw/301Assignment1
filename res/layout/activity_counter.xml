@@ -19,42 +19,44 @@
     </RelativeLayout>
     
     
-    <LinearLayout
+    <RelativeLayout 
    		android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:orientation="horizontal">
+    	android:layout_height="wrap_content">
         
         <Button
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
         	android:text="@string/button_rename"
         	android:onClick="rename" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:text="@string/button_reset"
             android:onClick="reset" />
         
-    </LinearLayout>
-    <LinearLayout 
+    </RelativeLayout>
+    <RelativeLayout  
    		android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:orientation="horizontal">
+    	android:layout_height="wrap_content">
         
         <Button
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
         	android:text="@string/button_remove"
         	android:onClick="remove" />
         
         <Button
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
+        	android:layout_alignParentRight="true"
         	android:text="@string/button_summarize"
         	android:onClick="summarize" />
         
-    </LinearLayout>
+    </RelativeLayout>
     
     <RelativeLayout 
         android:layout_width="fill_parent"
