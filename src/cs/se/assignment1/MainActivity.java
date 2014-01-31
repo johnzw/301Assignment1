@@ -27,12 +27,15 @@ public class MainActivity extends Activity {
 	private EditText editText;
 	private Button addButton;
 	private ListView listCounter;
-	private ArrayList<Counter> counterList;
+	private ArrayList<Counter> counterList = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//let ListCounter get reference
+		listCounter = (ListView) findViewById(R.id.counterList);
 	}                     
 
 	@Override
@@ -40,6 +43,11 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	protected void onStart(){
+		super.onStart();
+		
 	}
 	
 	//called when user clicks the button
@@ -59,9 +67,32 @@ public class MainActivity extends Activity {
 		//Add counter to exsiting counter list
 		counterList.add(counter);
 		
-		
 	}
 	
+	//Load everything from counterlist file, and store it in memory, and make it ready to present to screen
+	private void loadFromFile(){
+		Gson gson = new Gson();
+		Counter counter;
+		
+		try{
+			FileInputStream fis = openFileInput(FILENAME);
+			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+			//each line is a json object
+			String line = in.readLine();
+			while(line != null){
+				counter = gson.fromJson(line, Counter.class);
+				counterList.add(counter);
+				line = in.readLine();
+			}
+		}catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	//using gson to convert counter into Json, and add it to the end of file
 	private void saveInFile(Counter counter) {
 		Gson gson = new Gson();
 		try {
