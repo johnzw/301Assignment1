@@ -25,7 +25,8 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 	
-	private static final String FILENAME = "countersfile.sav";
+	private static final String FILENAME1 = "countersfile.sav";
+	private static final String FILENAME2 = "tempcounterfile.sav";
 	private EditText editText;
 	private Button addButton;
 	private ListView listCounter;
@@ -58,6 +59,9 @@ public class MainActivity extends Activity {
 		//load every Counter into counterList
 		loadFromFile();
 		
+		//do some small change according to change's of some counter
+		checkTempFile();
+		
 		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counterList);
 		listCounter.setAdapter(adapter);
 		
@@ -73,6 +77,43 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+	}
+	
+	private void checkTempFile(){
+		Gson gson = new Gson();
+		Counter counter =null;
+		
+		//read the fixed counter from the file
+		try{
+			FileInputStream fis = openFileInput(FILENAME2);
+			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+			//each line is a json object
+			String line = in.readLine();
+			counter = gson.fromJson(line, Counter.class);
+			
+		}catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		this.updateCounterList(counter);
+		this.saveInFile();
+	}
+	
+	private void updateCounterList(Counter counter){
+		if(counter == null){
+			return;
+		}
+		for(int i=0; i< counterList.size(); i++){
+			Counter theCounter = counterList.get(i);
+			if(theCounter.getName().equals(counter.getName())){
+				counterList.set(i, counter);
+				break;
+			}
+		}
 	}
 	
 	//called when user clicks the button
@@ -111,7 +152,7 @@ public class MainActivity extends Activity {
 		Counter counter;
 		
 		try{
-			FileInputStream fis = openFileInput(FILENAME);
+			FileInputStream fis = openFileInput(FILENAME1);
 			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
 			//each line is a json object
 			String line = in.readLine();
@@ -128,13 +169,32 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 	}
+	
 	//using gson to convert counter into Json, and add it to the end of file
 	private void saveInFile(Counter counter) {
 		Gson gson = new Gson();
 		try {
-			FileOutputStream fos = openFileOutput(FILENAME,
+			FileOutputStream fos = openFileOutput(FILENAME1,
 					Context.MODE_APPEND);
 			fos.write((gson.toJson(counter)+"\n").getBytes());
+			fos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void saveInFile() {
+		Gson gson = new Gson();
+		try {
+			FileOutputStream fos = openFileOutput(FILENAME1,
+					Context.MODE_PRIVATE);
+			for(int i=0; i<counterList.size(); i++){
+				fos.write((gson.toJson(counterList.get(i))+"\n").getBytes());
+			}
 			fos.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

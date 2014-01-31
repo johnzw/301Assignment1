@@ -7,6 +7,7 @@ public class Counter {
 	private int totalcounts;
 	private ArrayList<Count> counts;
 	private int tempcounts;
+	private boolean isDeleted = false;
 	
 	//Constructor
 	public Counter(String name){
@@ -14,6 +15,14 @@ public class Counter {
 		this.totalcounts = 0;
 		this.tempcounts = 0;
 		counts = new ArrayList<Count>();
+	}
+	
+	public void delete(){
+		isDeleted = true;
+	}
+	
+	public boolean isDeleted(){
+		return this.isDeleted;
 	}
 	
 	public void increment(){
@@ -54,7 +63,7 @@ public class Counter {
 	}
 	
 	public String toString(){
-		return this.getName()+"\t" + this.getTotalcounts();
+		return "Name: "+this.getName()+"  Total counts: " + this.getTotalcounts();
 	}
 	
 }

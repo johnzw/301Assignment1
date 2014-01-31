@@ -1,5 +1,9 @@
 package cs.se.assignment1;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import com.google.gson.Gson;
 
 import android.os.Bundle;
@@ -10,10 +14,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
 public class CounterActivity extends Activity {
+		private static final String FILENAME = "tempcounterfile.sav";
 		private Counter theCounter;
 		private TextView nameText;
 		private TextView countsText;
@@ -73,7 +79,41 @@ public class CounterActivity extends Activity {
 	public void increment(View view){
 		theCounter.increment();
 		countsText.setText(""+theCounter.getTotalcounts());
+		
+		//every time increment clicked, the fixed counter is saved into file
+		saveInFile(theCounter);
 	}
 	
+	public void reset(View view){
+		theCounter.reset();
+		countsText.setText(""+theCounter.getTotalcounts());
+		
+		saveInFile(theCounter);
+	}
+	
+	public void remove(View view){
+		finish();
+	}
+	
+	public void summarize(){
+		
+	}
+	
+	
+	private void saveInFile(Counter counter) {
+		Gson gson = new Gson();
+		try {
+			FileOutputStream fos = openFileOutput(FILENAME,
+					Context.MODE_PRIVATE);
+			fos.write((gson.toJson(counter)).getBytes());
+			fos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }
