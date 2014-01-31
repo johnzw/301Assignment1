@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
@@ -64,5 +65,15 @@ public class CounterActivity extends Activity {
 	public void onStart(){
 		super.onStart();
 		nameText.setText(theCounter.getName());
+		countsText.setText(""+theCounter.getTotalcounts());
 	}
+	
+	//called when user click the "increment" button
+	//and the total counts in the middle of screen would increment by 1
+	public void increment(View view){
+		theCounter.increment();
+		countsText.setText(""+theCounter.getTotalcounts());
+	}
+	
+	
 }

@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="60sp"/>
+        android:textSize="30sp"/>
         
     </RelativeLayout>
     
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="80sp"/>
+            android:textSize="90sp"/>
         
     </RelativeLayout>
     
@@ -73,7 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="50sp"
+            android:onClick="increment"
+            android:textSize="60sp"
             android:text="@string/button_increment" />  
     </RelativeLayout>
     
