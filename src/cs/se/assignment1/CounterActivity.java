@@ -25,11 +25,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 
+/**
+ * @author  wzhong3
+ */
 public class CounterActivity extends Activity {
 		private static final String FILENAME2 = "tempcounterfile.sav";
 		private static final String FILENAME1 = "countersfile.sav";
 		public final static String EXTRA_MESSAGE = "se.assignment1.CounterActivity.MESSAGE";
 
+		/**
+		 * @uml.property  name="theCounter"
+		 * @uml.associationEnd  
+		 */
 		private Counter theCounter;
 		private TextView nameText;
 		private TextView countsText;

@@ -2,11 +2,29 @@ package cs.se.assignment1;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author  wzhong3
+ */
 public class Counter {
+	/**
+	 * @uml.property  name="name"
+	 */
 	private String name;
+	/**
+	 * @uml.property  name="totalcounts"
+	 */
 	private int totalcounts;
+	/**
+	 * @uml.property  name="counts"
+	 */
 	private ArrayList<Count> counts;
+	/**
+	 * @uml.property  name="tempcounts"
+	 */
 	private int tempcounts;
+	/**
+	 * @uml.property  name="isDeleted"
+	 */
 	private boolean isDeleted = false;
 	private String [] MONTH = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", 
 								"JUL", "AUG", "SEPT", "OCT", "NOV", "DEC"};
@@ -23,6 +41,10 @@ public class Counter {
 		isDeleted = true;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="isDeleted"
+	 */
 	public boolean isDeleted(){
 		return this.isDeleted;
 	}
@@ -280,18 +302,34 @@ public class Counter {
 	
 	
 	//the following four method are getters
+	/**
+	 * @return
+	 * @uml.property  name="name"
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="totalcounts"
+	 */
 	public int getTotalcounts() {
 		return totalcounts;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="counts"
+	 */
 	public ArrayList<Count> getCounts() {
 		return counts;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="tempcounts"
+	 */
 	public int getTempcounts(){
 		return tempcounts;
 	}

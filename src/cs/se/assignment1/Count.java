@@ -11,35 +11,80 @@ import java.util.Date;
  * 
  */
 
+/**
+ * @author  wzhong3
+ */
 public class Count {
+	/**
+	 * @uml.property  name="timestamp"
+	 */
 	private Date timestamp;
+	/**
+	 * @uml.property  name="year"
+	 */
 	private int year;
+	/**
+	 * @uml.property  name="month"
+	 */
 	private int month;
+	/**
+	 * @uml.property  name="date"
+	 */
 	private int date;
+	/**
+	 * @uml.property  name="hour"
+	 */
 	private int hour;
+	/**
+	 * @uml.property  name="min"
+	 */
 	private int min;
 	private int dayofweek;
 	
+	/**
+	 * @return
+	 * @uml.property  name="timestamp"
+	 */
 	public Date getTimestamp(){
 		return timestamp;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="year"
+	 */
 	public int getYear() {
 		return year;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="month"
+	 */
 	public int getMonth() {
 		return month;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="hour"
+	 */
 	public int getHour() {
 		return hour;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="min"
+	 */
 	public int getMin() {
 		return min;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="date"
+	 */
 	public int getDate() {
 		return date;
 	}

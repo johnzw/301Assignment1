@@ -16,9 +16,16 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 
+/**
+ * @author  wzhong3
+ */
 public class StatActivity extends Activity {
 	private ListView listview;
 	private ArrayAdapter<String> adapter;
+	/**
+	 * @uml.property  name="counter"
+	 * @uml.associationEnd  
+	 */
 	private Counter counter;
 	private ArrayList<String> statList =null;
 	@Override
