@@ -17,6 +17,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,6 +30,7 @@ public class MainActivity extends Activity {
 	private Button addButton;
 	private ListView listCounter;
 	private ArrayList<Counter> counterList = null;
+	private ArrayAdapter<Counter> adapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class MainActivity extends Activity {
 		
 		//let ListCounter get reference
 		listCounter = (ListView) findViewById(R.id.counterList);
+		editText = (EditText) findViewById(R.id.editName);
 	}                     
 
 	@Override
@@ -47,6 +51,25 @@ public class MainActivity extends Activity {
 	
 	protected void onStart(){
 		super.onStart();
+		counterList = new ArrayList<Counter>();
+		
+		//load every Counter into counterList
+		loadFromFile();
+		
+		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counterList);
+		listCounter.setAdapter(adapter);
+		
+		listCounter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				
+				Counter counter = adapter.getItem(position);
+				editText.setText(counter.getName());
+			}
+		});
 		
 	}
 	
@@ -57,7 +80,7 @@ public class MainActivity extends Activity {
 		
 		Intent intent = new Intent(this, CounterActivity.class);
 		//Get the name from EditText, without considering the blank one, without name checking 
-		editText = (EditText) findViewById(R.id.editName);
+		
 		String name = editText.getText().toString();
 		
 		//use this name to create a counter
@@ -66,6 +89,8 @@ public class MainActivity extends Activity {
 		
 		//Add counter to exsiting counter list
 		counterList.add(counter);
+		adapter.notifyDataSetChanged();
+		editText.setText("");
 		
 	}
 	

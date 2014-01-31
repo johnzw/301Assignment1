@@ -53,4 +53,8 @@ public class Counter {
 		return tempcounts;
 	}
 	
+	public String toString(){
+		return this.getName()+"\t" + this.getTotalcounts();
+	}
+	
 }
