@@ -28,6 +28,8 @@ import android.os.Build;
 public class CounterActivity extends Activity {
 		private static final String FILENAME2 = "tempcounterfile.sav";
 		private static final String FILENAME1 = "countersfile.sav";
+		public final static String EXTRA_MESSAGE = "se.assignment1.CounterActivity.MESSAGE";
+
 		private Counter theCounter;
 		private TextView nameText;
 		private TextView countsText;
@@ -153,8 +155,12 @@ public class CounterActivity extends Activity {
 		finish();
 	}
 	
-	public void summarize(){
-		
+	public void summarize(View view){
+		Gson gson = new Gson();
+		Intent intent = new Intent(this, StatActivity.class);
+	    String message = gson.toJson(theCounter);
+	    intent.putExtra(EXTRA_MESSAGE, message);
+	    startActivity(intent);
 	}
 	
 	

@@ -10,7 +10,14 @@
     <string name="button_reset">Reset</string>
     <string name="button_remove">Remove</string>
     <string name="button_summarize">Summarize</string>
-	<string name="button_increment">Increment</string>
-	<string name="ok">OK</string>
-	<string name="cancel">Cancel</string>
+    <string name="button_increment">Increment</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_stat">StatActivity</string>
+    <string name="button_min">Min</string>
+    <string name="button_hour">Hour</string>
+    <string name="button_day">Day</string>
+    <string name="button_month">Month</string>
+    <string name="textview_stat">Aggregate total counts by:</string>
+
 </resources>

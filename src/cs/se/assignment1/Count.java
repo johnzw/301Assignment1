@@ -47,7 +47,7 @@ public class Count {
 	public Count(Date date){
 		this.timestamp = date;
 		this.year = this.timestamp.getYear()+1900;
-		this.month = this.timestamp.getMonth()+1;
+		this.month = this.timestamp.getMonth();
 		this.date = this.timestamp.getDate();
 		this.hour = this.timestamp.getHours();
 		this.min = this.timestamp.getMinutes();
