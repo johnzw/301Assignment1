@@ -52,9 +52,6 @@ public class Counter {
 		ArrayList<String> list = new ArrayList<String>();
 		int numbers = 1;
 		
-		
-		System.out.print(""+counts.size());
-				
 		if(counts.size() == 0){
 			return list;
 		}
@@ -86,13 +83,42 @@ public class Counter {
 		}	
 	}
 	
+	public ArrayList<String> countsPerWeek(){
+		ArrayList<String> list = new ArrayList<String>();
+		int numbers = 1;
+		
+		if(counts.size() == 0){
+			return list;
+		}
+		else if(counts.size() == 1){
+			addInfoWeek(list, 0, numbers);
+			return list;
+		}
+		else{
+			int i;
+			for(i= 1;i< counts.size(); i++){
+				Count count = counts.get(i);
+				if(counts.get(i-1).inSameWeek(count)){
+					numbers++;
+				}
+				else{
+					addInfoWeek(list, i-1, numbers);
+					numbers =1;
+				}
+				
+				
+			}
+			
+			addInfoWeek(list, i-1, numbers);
+			
+			return list;	
+		}	
+	}
+	
 	public ArrayList<String> countsPerDay(){
 		ArrayList<String> list = new ArrayList<String>();
 		int numbers = 1;
 		
-		
-		System.out.print(""+counts.size());
-				
 		if(counts.size() == 0){
 			return list;
 		}
@@ -135,9 +161,6 @@ public class Counter {
 		ArrayList<String> list = new ArrayList<String>();
 		int numbers = 1;
 		
-		
-		System.out.print(""+counts.size());
-				
 		if(counts.size() == 0){
 			return list;
 		}
@@ -185,9 +208,6 @@ public class Counter {
 		ArrayList<String> list = new ArrayList<String>();
 		int numbers = 1;
 		
-		
-		System.out.print(""+counts.size());
-				
 		if(counts.size() == 0){
 			return list;
 		}
@@ -242,6 +262,10 @@ public class Counter {
 	
 	public void addInfoDay(ArrayList<String> list, int i, int numbers){
 		list.add("Day of "+MONTH[counts.get(i).getMonth()]+" "+counts.get(i).getDate()+" "+counts.get(i).getYear()+" -- "+ numbers);
+	}
+	
+	public void addInfoWeek(ArrayList<String> list, int i, int numbers){
+		list.add("Week of "+MONTH[counts.get(i).getMonth()]+" "+counts.get(i).getDate()+" "+counts.get(i).getYear()+" -- "+ numbers);
 	}
 	
 	public void addInfoMonth(ArrayList<String> list, int i, int numbers){

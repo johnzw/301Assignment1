@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_hour"
+            android:textSize="15sp"
             android:onClick="OrderByHour"/>
         
         <Button 
@@ -44,8 +45,17 @@
         <Button 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/button_week"
+            android:textSize="15sp"
+            android:onClick="OrderByWeek"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="OrderByMonth"
             android:text="@string/button_month"
-            android:onClick="OrderByMonth"/>
+            android:textSize="12sp" />
+
     </LinearLayout>
 
 </LinearLayout>

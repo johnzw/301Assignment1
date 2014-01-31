@@ -108,6 +108,15 @@ public class StatActivity extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 	
+	public void OrderByWeek(View view){
+		ArrayList<String> temp = counter.countsPerWeek();
+		statList.clear();
+		for(int i=0; i< temp.size(); i++){
+			statList.add(temp.get(i));
+		}
+		adapter.notifyDataSetChanged();
+	}
+	
 	public void OrderByMonth(View view){
 		ArrayList<String> temp = counter.countsPerMonth();
 		statList.clear();
