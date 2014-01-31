@@ -91,7 +91,14 @@ public class CounterActivity extends Activity {
 		saveInFile(theCounter);
 	}
 	
+	public void rename(View view){
+		
+	}
+	
 	public void remove(View view){
+		theCounter.delete();
+		saveInFile(theCounter);
+		
 		finish();
 	}
 	

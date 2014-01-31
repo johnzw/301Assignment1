@@ -116,8 +116,17 @@ public class MainActivity extends Activity {
 		for(int i=0; i< counterList.size(); i++){
 			Counter theCounter = counterList.get(i);
 			if(theCounter.getName().equals(counter.getName())){
-				counterList.set(i, counter);
-				break;
+				
+				//check if this fixed counter has been removed
+				if(counter.isDeleted()){
+					counterList.remove(i);
+					break;
+				}
+				else{
+					counterList.set(i, counter);
+					break;
+				}
+				
 			}
 		}
 	}
