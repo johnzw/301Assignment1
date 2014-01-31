@@ -11,5 +11,6 @@
     <string name="button_remove">Remove</string>
     <string name="button_summarize">Summarize</string>
 	<string name="button_increment">Increment</string>
-	
+	<string name="ok">OK</string>
+	<string name="cancel">Cancel</string>
 </resources>
