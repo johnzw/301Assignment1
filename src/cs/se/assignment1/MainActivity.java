@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
@@ -79,6 +80,10 @@ public class MainActivity extends Activity {
 		
 	}
 	
+	
+	//there is a fixed version of one counter in the tempfile
+	//let counterList be updated with this counter
+	//And save the new counterList into the file
 	private void checkTempFile(){
 		Gson gson = new Gson();
 		Counter counter =null;
@@ -103,6 +108,7 @@ public class MainActivity extends Activity {
 		this.saveInFile();
 	}
 	
+	//counterList update by the counter according to its name
 	private void updateCounterList(Counter counter){
 		if(counter == null){
 			return;
@@ -124,6 +130,21 @@ public class MainActivity extends Activity {
 		
 		//Get the name from EditText, without considering the blank one, without name checking 
 		String name = editText.getText().toString();
+		
+		//check if entered name is blank
+		if(name.equals("")){
+			return;
+		}
+		
+		for(int i=0; i<counterList.size(); i++){
+			if(counterList.get(i).getName().equals(name)){
+				AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+				alertDialog.setTitle("Sorry");
+				alertDialog.setMessage("the name has already existed, please change a name.");
+				alertDialog.show();
+				return;
+			}
+		}
 		
 		//use this name to create a counter
 		Counter counter = new Counter(name);
@@ -187,6 +208,7 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	//very similar to saveinFile, but this time it overwrite the file with the counterList
 	private void saveInFile() {
 		Gson gson = new Gson();
 		try {
