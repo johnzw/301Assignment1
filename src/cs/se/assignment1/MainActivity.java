@@ -167,7 +167,6 @@ public class MainActivity extends Activity {
 		
 		this.createAnotherActivity(counter);
 	}
-	
 	public void sort(View view){
 		Collections.sort(counterList, new Comparator<Counter>(){
 			public int compare(Counter counter1, Counter counter2){
