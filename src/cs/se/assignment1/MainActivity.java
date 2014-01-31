@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
 		//let ListCounter get reference
 		listCounter = (ListView) findViewById(R.id.counterList);
 		editText = (EditText) findViewById(R.id.editName);
+		
 	}                     
 
 	@Override
@@ -92,6 +93,8 @@ public class MainActivity extends Activity {
 		editText.setText("");
 		
 		this.createAnotherActivity(counter);
+		
+		
 	}
 	
 	//send counter to another activity, and start that activity
