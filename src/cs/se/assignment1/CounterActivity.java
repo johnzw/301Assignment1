@@ -101,6 +101,8 @@ public class CounterActivity extends Activity {
 		saveInFile(theCounter);
 	}
 	
+	
+	//called when user click the "reset" button
 	public void reset(View view){
 		theCounter.reset();
 		countsText.setText(""+theCounter.getTotalcounts());
@@ -108,8 +110,8 @@ public class CounterActivity extends Activity {
 		saveInFile(theCounter);
 	}
 	
+	//called when user click the "rename button"
 	public void rename(View view){
-		// 1. Instantiate an AlertDialog.Builder with its constructor
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		final EditText input = new EditText(this);
 		builder.setView(input);
@@ -120,7 +122,6 @@ public class CounterActivity extends Activity {
 		            loadFromFile();
 		            
 		            //check if changed name has existed before
-
 		    		for(int i=0; i<counterList.size(); i++){
 		    			if(counterList.get(i).getName().equals(value)){
 		    				alertName();
@@ -128,6 +129,7 @@ public class CounterActivity extends Activity {
 		    			}
 		    		}
 		    		
+		    		//change the name of counter in the counter list, and write back to the file system
 		    		for(int i=0; i<counterList.size(); i++){
 		    			if(counterList.get(i).getName().equals(theCounter.getName())){
 		    				counterList.get(i).editName(value);
@@ -149,12 +151,15 @@ public class CounterActivity extends Activity {
 		alert.show();
 	}
 	
+	//throw a dialog when user type in the existed name
 	public void alertName(){
 		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 		alertDialog.setTitle("Sorry");
 		alertDialog.setMessage("the name has already existed, please change a name.");
 		alertDialog.show();
 	}
+	
+	//called when user click "remove", the fixed version of counter is written into the file and the activity exit
 	public void remove(View view){
 		theCounter.delete();
 		saveInFile(theCounter);
@@ -162,6 +167,7 @@ public class CounterActivity extends Activity {
 		finish();
 	}
 	
+	//called when user click "Summarize" button
 	public void summarize(View view){
 		Gson gson = new Gson();
 		Intent intent = new Intent(this, StatActivity.class);
@@ -170,7 +176,7 @@ public class CounterActivity extends Activity {
 	    startActivity(intent);
 	}
 	
-	
+	//save one counter object into file
 	private void saveInFile(Counter counter) {
 		Gson gson = new Gson();
 		try {
@@ -187,6 +193,7 @@ public class CounterActivity extends Activity {
 		}
 	}
 	
+	//load counter list from file, same as the one in mainactivity
 	private void loadFromFile(){
 		Gson gson = new Gson();
 		Counter counter;

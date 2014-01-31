@@ -88,7 +88,12 @@ public class StatActivity extends Activity {
 		listview.setAdapter(adapter);
 	}
 	
+	//called when user click "Min" button
 	public void OrderByMin(View view){
+		
+		//because we have to do something with object statList,
+		//we should do modification to the object itself
+		//assign a new object to statList will throw an exception
 		ArrayList<String> temp = counter.countsPerMin();
 		statList.clear();
 		for(int i=0; i< temp.size(); i++){
@@ -97,6 +102,7 @@ public class StatActivity extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 	
+	//called when user click "Hour" button
 	public void OrderByHour(View view){
 		ArrayList<String> temp = counter.countsPerHour();
 		statList.clear();
@@ -106,6 +112,7 @@ public class StatActivity extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 	
+	//called when user click "Day" button
 	public void OrderByDay(View view){
 		ArrayList<String> temp = counter.countsPerDay();
 		statList.clear();
@@ -115,6 +122,7 @@ public class StatActivity extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 	
+	//called when user click "Week" button
 	public void OrderByWeek(View view){
 		ArrayList<String> temp = counter.countsPerWeek();
 		statList.clear();
@@ -124,6 +132,7 @@ public class StatActivity extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 	
+	//called when user click "Month" button
 	public void OrderByMonth(View view){
 		ArrayList<String> temp = counter.countsPerMonth();
 		statList.clear();

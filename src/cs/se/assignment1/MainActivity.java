@@ -167,8 +167,11 @@ public class MainActivity extends Activity {
 		
 		this.createAnotherActivity(counter);
 	}
+	
+	//sort the counterlist and then change the view
 	public void sort(View view){
 		Collections.sort(counterList, new Comparator<Counter>(){
+			//implement the Comparator to sort the list of Counters according to its total count
 			public int compare(Counter counter1, Counter counter2){
 				if(counter1.getTotalcounts() < counter2.getTempcounts()){
 					return 1;

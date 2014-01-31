@@ -33,10 +33,10 @@ public class Counter {
 	public Counter(String name){
 		this.name = name;
 		this.totalcounts = 0;
-		this.tempcounts = 0;
 		counts = new ArrayList<Count>();
 	}
 	
+	//called when counter's removed
 	public void delete(){
 		isDeleted = true;
 	}
@@ -45,9 +45,11 @@ public class Counter {
 	 * @return
 	 * @uml.property  name="isDeleted"
 	 */
+	
 	public boolean isDeleted(){
 		return this.isDeleted;
 	}
+	
 	
 	public void increment(){
 		this.tempcounts++;
@@ -69,7 +71,9 @@ public class Counter {
 		this.tempcounts = 0;
 	}
 	
-	//the following are statistic part
+	//the following five are for statistic part
+	//using the list of count, aggregate the counts over month, week, day, hour and minutes
+	//return the arraylist of String item
 	public ArrayList<String> countsPerMonth(){
 		ArrayList<String> list = new ArrayList<String>();
 		int numbers = 1;
@@ -278,6 +282,7 @@ public class Counter {
 		
 	}
 	
+	//the following five just help to present aggregation information 
 	public void addInfoHour(ArrayList<String> list, int i, int numbers){
 		list.add("Hour of "+MONTH[counts.get(i).getMonth()]+" "+counts.get(i).getDate()+" "+counts.get(i).getHour()+":00"+" -- "+ numbers);
 	}

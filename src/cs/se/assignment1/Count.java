@@ -93,7 +93,8 @@ public class Count {
 		return this.dayofweek;
 	}
 	
-	//some bugs with this method
+	//see if another count is in the same week
+	//some bugs within this method
 	public boolean inSameWeek(Count count){
 		Calendar c1 = Calendar.getInstance();
 		c1.setTime(count.getTimestamp());
